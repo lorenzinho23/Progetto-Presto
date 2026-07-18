@@ -58,23 +58,26 @@ fetch("./annunci.json")
     }
     showCards(data);
 
+    let radioButtons = document.querySelectorAll(".form-check-input");
     // FILTRO ANNUNCI PER CATEGORIA
-    function filterByCategory(category) {
+    function filterByCategory(array) {
+      let category = Array.from(radioButtons).find(
+        (button) => button.checked,
+      ).id;
+
       if (category != "All") {
-        let filteredCards = data.filter(
+        let filteredCards = array.filter(
           (annuncio) => annuncio.category === category,
         );
-        console.log(filteredCards);
-        showCards(filteredCards);
+        return filteredCards;
       } else {
-        showCards(data);
+        return;
       }
     }
 
-    let radioButtons = document.querySelectorAll(".form-check-input");
     radioButtons.forEach((radio) => {
       radio.addEventListener("click", () => {
-        filterByCategory(radio.id);
+        globalFilter();
       });
     });
 
@@ -93,27 +96,35 @@ fetch("./annunci.json")
     setPriceInput();
 
     // FILTRO ANNUNCI PER PREZZO
-    function filterByPrice() {
-      let filtered = data.filter(
+    function filterByPrice(array) {
+      let filtered = array.filter(
         (annuncio) => +annuncio.price <= priceInput.value,
       );
-      showCards(filtered);
+      return filtered;
     }
 
     priceInput.addEventListener("input", () => {
       priceValue.innerHTML = priceInput.value;
-      filterByPrice();
+      globalFilter();
     });
 
     let wordInput = document.querySelector("#wordInput");
-    function filterByWord(parola) {
-      let filtered = data.filter((annuncio) =>
-        annuncio.name.toLowerCase().includes(parola.toLowerCase()),
+    function filterByWord(array) {
+      let filtered = array.filter((annuncio) =>
+        annuncio.name.toLowerCase().includes(wordInput.value.toLowerCase()),
       );
-      showCards(filtered);
+      return filtered;
     }
 
     wordInput.addEventListener("input", () => {
-      filterByWord(wordInput.value);
+      globalFilter();
     });
+
+    function globalFilter() {
+      let filteredByCategory = filterByCategory(data); // array filtrato per categoria
+      let filteredByPrice = filterByPrice(filteredByCategory); // array filtrato per categoria e prezzo
+      let filteredByWord = filterByWord(filteredByPrice); // array filtrato per categoria, prezzo e parola
+
+      showCards(filteredByWord);
+    }
   });
