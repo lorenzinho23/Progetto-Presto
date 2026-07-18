@@ -6,10 +6,35 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
     font-family: "Headland One", serif;
 }
 
+h1, .h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+h2, .h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+h3, .h3 {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+h4, .h4 {
+    font-size: 14px;
+    font-weight: 300;
+}
+
 :root {
     --orange: #f5cb5c;
     --black: #242423;
     --white: #e8eddf;
+}
+
+body {
+    background-color: var(--black);
+    color: var(--white);
 }
 
 .bg-orange {
@@ -22,6 +47,18 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 
 .bg-white {
     background-color: var(--white);
+}
+
+.text-orange {
+    color: var(--orange);
+}
+
+.text-black {
+    color: var(--black);
+}
+
+.text-white {
+    color: var(--white);
 }
 
 /* NAVBAR STYLES */
@@ -40,4 +77,114 @@ h1, h2, h3, h4, .h1, .h2, .h3, .h4 {
 
 .logo {
     width: 70px;
+}
+
+.logo-menu {
+    width: 20px;
+}
+
+/* HEADER */
+.header {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent, rgba(0, 0, 0, 0.5)), url("media/header.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}   
+
+.btn-custom {
+    background-color: var(--black);
+    color: var(--orange);
+    font-weight: 700;
+    border-radius: 20px;
+    margin: 0 15px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-custom:hover {
+    background-color: var(--orange);
+    color: var(--black);
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
+/* POSITIONED */
+.positioned {
+    position: relative;
+    top: -150px;
+}
+
+.col-custom {
+    padding: 10px;
+    border: 2px solid var(--black);
+    cursor: pointer;
+    transition: 0.5s;
+    color: var(--black);
+}
+
+.col-custom:hover {
+    background-color: var(--black);
+    color: var(--orange);
+    border: 2px solid var(--orange);
+    transform: scale(1.05);
+}
+
+/* NUMERI */
+.number {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orange);
+}
+
+/* SWIPER */
+.swiper {
+    height: 500px;
+}
+
+.card-review {
+    height: 250px;
+    width: 500px;
+    border: 2px solid var(--orange);
+    border-radius: 20px;
+}
+
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* MEDIA QUERY */
+@media screen and (max-width: 600px) {
+    .positioned {
+        position: static;
+    }
+}
+
+/* ACCORDION */
+.accordion-button {
+    background-color: var(--black);
+    color: var(--orange);
+}
+
+.accordion-button:not(.collapsed) {
+    background-color: var(--orange);
+    color: var(--black);
+    box-shadow: none;  
+}
+
+.accordion-button:focus {
+    box-shadow: none;
+}
+
+.card-custom {
+    height: 200px;
+    width: 30%;
+    border: 2px solid var(--orange);
+    border-radius: 20px;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
