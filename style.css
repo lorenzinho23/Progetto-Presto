@@ -30,6 +30,7 @@ h4, .h4 {
     --orange: #f5cb5c;
     --black: #242423;
     --white: #e8eddf;
+    --accordion-button-icon: url("./media/accordion.svg")
 }
 
 body {
@@ -85,7 +86,7 @@ body {
 
 /* HEADER */
 .header {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent, rgba(0, 0, 0, 0.5)), url("media/header.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), transparent, rgba(0, 0, 0, 0.5)), url("media/header.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -108,6 +109,23 @@ body {
     transform: scale(1.05);
 }
 
+.btn-alternative {
+    background-color: var(--orange);
+    color: var(--black);
+    font-weight: 700;
+    border-radius: 20px;
+    margin: 0 15px;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+.btn-alternative:hover {
+    background-color: var(--black);
+    color: var(--orange);
+    text-decoration: none;
+    transform: scale(1.05);
+}
+
 /* POSITIONED */
 .positioned {
     position: relative;
@@ -117,6 +135,7 @@ body {
 .col-custom {
     padding: 10px;
     border: 2px solid var(--black);
+    border-radius: 20px;
     cursor: pointer;
     transition: 0.5s;
     color: var(--black);
@@ -130,6 +149,16 @@ body {
 }
 
 /* NUMERI */
+.number-grid {
+    gap: 20px;
+}
+
+.number-box {
+    border: 2px solid var(--orange);
+    border-radius: 20px;
+    width: 45%;
+}
+
 .number {
     font-size: 1.5rem;
     font-weight: 700;
@@ -154,17 +183,13 @@ body {
     align-items: center;
 }
 
-/* MEDIA QUERY */
-@media screen and (max-width: 600px) {
-    .positioned {
-        position: static;
-    }
-}
-
 /* ACCORDION */
 .accordion-button {
     background-color: var(--black);
     color: var(--orange);
+}
+.accordion-button::after {
+    background-image: var(--accordion-button-icon);
 }
 
 .accordion-button:not(.collapsed) {
@@ -187,4 +212,161 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+/* ANNUNCI */
+.banner-hero {
+    background-color: var(--orange);
+}
+
+
+/* CHI SIAMO  */
+.circle {
+    height: 300px;
+    width: 300px;
+    border-radius: 50%;
+    border: 3px solid var(--orange);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+.opener {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    background-color: #f5cb5c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.moved {
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 2px solid var(--white);
+    background-color: #000;
+
+    position: absolute;
+    z-index: 2;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+.flip-card {
+    height: 405px;
+    width: 255px;
+}
+
+.flip-card:hover > .inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card .inner {
+    height: 100%;
+    width: 100%;
+    border: 2px solid var(--orange);
+    border-radius: 20px;
+
+    transform-style: preserve-3d;
+
+    transition: 0.5s;
+    position: relative;
+}
+
+.inner-face {
+    height: 400px;
+    width: 250px;
+    background-image: url(./media/member1.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    position: absolute;
+}
+
+.inner-back {
+    height: 400px;
+    width: 250px;
+    backface-visibility: hidden;
+    position: absolute;
+    transform: rotateY(180deg);
+    text-align: center;
+    padding: 20px;
+}
+
+.mt-x {
+    margin-top: 70px;
+}
+
+.vh-25 {
+    height: 25vh;
+}
+
+.vh-50 {
+    height: 50vh;
+}
+
+.vh-75 {
+    height: 75vh;
+}
+/* MEDIA QUERY */
+@media screen and (max-width: 600px) {
+    .positioned {
+        position: static;
+    }
+    .lead {
+        font-size: 14px;
+    }
+    .card-custom {
+        width: 45%;
+        text-align: center;
+    }
+    h1, .h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+    }
+    h2, .h2 {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+    h3, .h3 {
+        font-size: 16px;
+        font-weight: 300;
+    }
+    h4, .h4 {
+        font-size: 12px;
+        font-weight: 300;
+    }
+    .circle {
+        height: 100px;
+        width: 100px;
+    }
+    .opener, .moved {
+        height: 50px;
+        width: 50px;
+    }
+    .flip-card {
+        height: 155px;
+        width: 150px;
+    }
+    .inner-face, .inner-back {
+        height: 150px;
+        width: 150px;
+    }
+    .mt-10 {
+        margin-top: 10rem;
+    }
+    .mb-7 {
+        margin-bottom: 7rem;
+    }
+
 }

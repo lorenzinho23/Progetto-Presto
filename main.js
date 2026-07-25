@@ -104,7 +104,7 @@ reviews.forEach((review) => {
   let slide = document.createElement("div");
   slide.classList.add("swiper-slide");
   slide.innerHTML = `
-    <div class="card-review text-center">
+    <div class="card-review text-center d-flex flex-column justify-content-center">
       <p class="lead">${review.descrizione}</p>
       <p class="h4">${review.autore}</p>
       <div class="d-flex justify-content-center stars">

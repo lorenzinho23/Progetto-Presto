@@ -128,3 +128,37 @@ fetch("./annunci.json")
       showCards(filteredByWord);
     }
   });
+
+let navbar = document.querySelector("#navbar");
+let links = document.querySelectorAll(".nav-link");
+let logo = document.querySelector("#logo");
+let logoMenu = document.querySelector(".logo-menu");
+let containerFluid = document.querySelector(".container-fluid");
+
+window.addEventListener("scroll", function () {
+  let scrolled = window.scrollY;
+
+  if (scrolled > 0) {
+    navbar.classList.remove("bg-black");
+    navbar.classList.add("bg-orange");
+    containerFluid.classList.remove("bg-black");
+    containerFluid.classList.add("bg-orange");
+    navbar.style.height = "50px";
+    links.forEach((link) => {
+      link.style.color = "var(--black)";
+    });
+    logo.src = "media/logo_black.png";
+    logoMenu.src = "media/menu-black.png";
+  } else {
+    navbar.classList.add("bg-black");
+    navbar.classList.remove("bg-orange");
+    containerFluid.classList.add("bg-black");
+    containerFluid.classList.remove("bg-orange");
+    navbar.style.height = "70px";
+    links.forEach((link) => {
+      link.style.color = "var(--orange)";
+    });
+    logo.src = "media/logo_orange.png";
+    logoMenu.src = "media/menu-orange.png";
+  }
+});
