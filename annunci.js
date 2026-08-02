@@ -71,7 +71,7 @@ fetch("./annunci.json")
         );
         return filteredCards;
       } else {
-        return;
+        return array;
       }
     }
 
